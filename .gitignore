@@ -1,0 +1,29 @@
+# Log files
+*.log
+!logs/.keep
+logs/
+
+# Node
+node_modules
+
+# Composer
+/vendor
+
+# Cache
+.cache/*
+!.cache/.keep
+
+# Temporary files
+/tmp
+
+# PHPUnit
+.phpunit/
+
+# Environments variables
+.env
+
+# JetBrains
+.idea/
+
+# WordPres
+/wordpress/wp-config.php

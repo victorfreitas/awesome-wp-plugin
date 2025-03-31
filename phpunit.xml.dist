@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/11.3/phpunit.xsd"
+         bootstrap="tests/unit/bootstrap.php"
+         backupGlobals="false"
+         colors="true"
+         columns="120"
+         testdox="true"
+         testdoxSummary="true"
+         processIsolation="true"
+         stopOnFailure="true"
+         failOnWarning="true"
+         cacheDirectory=".phpunit/cache"
+>
+  <php>
+    <env name="WORDPRESS_TABLE_PREFIX" value="wp_test_"/>
+    <env name="WP_ENVIRONMENT_TYPE" value="test"/>
+
+    <ini name="memory_limit" value="256M"/>
+  </php>
+
+  <testsuites>
+    <testsuite name="unit">
+      <directory>tests/unit</directory>
+    </testsuite>
+    <testsuite name="e2e">
+      <directory>tests/e2e</directory>
+    </testsuite>
+  </testsuites>
+
+  <source>
+    <include>
+      <directory suffix=".php">config</directory>
+      <directory suffix=".php">includes</directory>
+      <directory suffix=".php">src</directory>
+    </include>
+  </source>
+
+  <coverage>
+    <report>
+      <html outputDirectory=".phpunit/coverage" lowUpperBound="50" highLowerBound="90"/>
+      <text outputFile=".phpunit/coverage/coverage.txt" showUncoveredFiles="true" showOnlySummary="true"/>
+    </report>
+  </coverage>
+
+  <logging>
+    <junit outputFile=".phpunit/logs/junit.xml"/>
+    <teamcity outputFile=".phpunit/logs/teamcity.txt"/>
+    <testdoxHtml outputFile=".phpunit/logs/testdox.html"/>
+    <testdoxText outputFile=".phpunit/logs/testdox.txt"/>
+  </logging>
+</phpunit>

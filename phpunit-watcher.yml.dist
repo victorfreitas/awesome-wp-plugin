@@ -1,0 +1,18 @@
+watch:
+  directories:
+    - config
+    - includes
+    - src
+    - tests
+  fileMask: '*.php'
+  ignoreDotFiles: true
+  ignoreVCS: true
+  ignoreVCSIgnored: false
+  hideManual: true
+notifications:
+  passingTests: false
+  failingTests: false
+phpunit:
+  binaryPath: ./vendor/bin/phpunit
+  arguments: '--fail-on-warning --stop-on-failure --process-isolation'
+  timeout: 600

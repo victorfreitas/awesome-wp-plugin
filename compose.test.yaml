@@ -1,0 +1,37 @@
+name: awesome_test
+
+services:
+  test:
+    container_name: awesome_test
+    command: composer test
+    networks:
+      - awesome_net
+    build:
+      context: .
+      dockerfile: Dockerfile.test
+
+  test_coverage:
+    container_name: awesome_test_coverage
+    command: composer test:coverage
+    extends:
+      service: test
+
+  test_watch:
+    container_name: awesome_test_watch
+    command: composer test:watch
+    working_dir: /awesome
+    volumes:
+      - .:/awesome
+      - vendor:/awesome/vendor
+    tty: true
+    extends:
+      service: test
+
+networks:
+  awesome_net:
+    name: awesome_network
+    driver: bridge
+
+volumes:
+  vendor:
+    driver: local

@@ -1,0 +1,23 @@
+FROM php:8.3-cli
+
+RUN apt update \
+  && apt upgrade -y \
+  && apt install -y zip unzip
+
+RUN pecl install xdebug \
+  && docker-php-ext-enable xdebug
+
+COPY --from=composer:2.8 /usr/bin/composer /usr/local/bin/composer
+
+WORKDIR /awesome
+
+COPY composer.json composer.lock ./
+
+COPY . .
+
+ARG COMPOSER_ROOT_VERSION=0.0.1
+ARG XDEBUG_MODE=coverage
+ENV COMPOSER_ROOT_VERSION=${COMPOSER_ROOT_VERSION}
+ENV XDEBUG_MODE=${XDEBUG_MODE}
+
+RUN composer install --no-cache --no-interaction --quiet

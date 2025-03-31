@@ -1,0 +1,27 @@
+{
+  "name": "@victorfreitas/awesome-wp-plugin",
+  "version": "0.0.1",
+  "description": "Awesome is a plugin that allows you to track the emails sent by your WordPress site.",
+  "main": "build/js/main.js",
+  "private": true,
+  "license": "GPL-3.0-or-later",
+  "type": "module",
+  "author": {
+    "name": "Victor Freitas",
+    "email": "dev@victorfreitas.tech",
+    "url": "https://github.com/victorfreitas"
+  },
+  "bugs": {
+    "url": "https://github.com/victorfreitas/awesome-wp-plugin/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/victorfreitas/awesome-wp-plugin.git"
+  },
+  "homepage": "https://github.com/victorfreitas/awesome-wp-plugin#readme",
+  "scripts": {},
+  "engines": {
+    "node": ">=22.14.0",
+    "npm": ">=10.8.0"
+  }
+}

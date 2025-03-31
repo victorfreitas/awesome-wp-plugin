@@ -1,0 +1,70 @@
+{
+  "name": "victorfreitas/awesome-wp-plugin",
+  "type": "wordpress-plugin",
+  "description": "Plugin all-in-one to enable awesome WordPress features",
+  "license": "GPL-3.0-or-later",
+  "minimum-stability": "stable",
+  "prefer-stable": true,
+  "authors": [
+    {
+      "name": "Victor Freitas",
+      "email": "dev@victorfreitas.tech"
+    }
+  ],
+  "support": {
+    "src": "https://github.com/victorfreitas/awesome-wp-plugin",
+    "issues": "https://github.com/victorfreitas/awesome-wp-plugin/issues"
+  },
+  "require": {
+    "php": ">=8.3",
+    "psr/log": "^3.0.2",
+    "monolog/monolog": "^3.9.0",
+    "psr/container": "^2.0.2"
+  },
+  "require-dev": {
+    "symfony/var-dumper": "^7.2.3",
+    "phpunit/phpunit": "^12.0.10",
+    "inpsyde/php-coding-standards": "^2.0.1",
+    "brain/monkey": "^2.6.2",
+    "wp-cli/i18n-command": "^2.6.4",
+    "spatie/phpunit-watcher": "^1.24.0",
+    "wp-cli/wp-cli": "dev-main"
+  },
+  "autoload": {
+    "files": [
+      "includes/functions.php"
+    ],
+    "psr-4": {
+      "Awesome\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Awesome\\Tests\\Unit\\": "tests/unit/",
+      "Awesome\\Tests\\E2e\\": "tests/e2e/",
+      "Awesome\\Tests\\Shared\\": "tests/shared/"
+    }
+  },
+  "scripts": {
+    "i18n": "make i18n",
+    "format": "@php phpcbf --report-summary --report-source",
+		"lint": "@php ./vendor/bin/phpcs",
+    "test": [
+      "@lint",
+      "@php ./vendor/bin/phpunit --no-coverage --no-logging"
+    ],
+    "test:coverage": "@php ./vendor/bin/phpunit",
+    "test:watch": [
+      "Composer\\Config::disableProcessTimeout",
+      "@php ./vendor/bin/phpunit-watcher watch --fail-on-warning --stop-on-failure --process-isolation < /dev/tty"
+    ]
+  },
+  "config": {
+    "platform-check": false,
+    "optimize-autoloader": true,
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true,
+      "composer/installers": true
+    }
+  }
+}

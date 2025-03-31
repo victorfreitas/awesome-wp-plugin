@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleset
+  name="php-codesniffer-awesome"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="vendor/squizlabs/php_codesniffer/phpcs.xsd"
+>
+
+  <description>Awesome Coding Style</description>
+
+  <arg name="basepath" value="."/>
+  <arg name="extensions" value="php"/>
+  <arg name="parallel" value="1"/>
+  <arg name="encoding" value="utf-8"/>
+  <arg name="colors"/>
+  <arg name="cache" value=".cache/phpcs.json"/>
+  <arg value="sp"/>
+  <arg name="standard" value="PSR12"/>
+
+  <config name="testVersion" value="8.3-"/>
+  <config name="minimum_supported_wp_version" value="6.7"/>
+  <config name="text_domain" value="awesome,default"/>
+
+  <file>config</file>
+  <file>includes</file>
+  <file>requirements</file>
+  <file>src</file>
+  <file>tests</file>
+  <file>awesome.php</file>
+
+  <rule ref="Inpsyde"/>
+
+  <rule ref="Zend.Debug.CodeAnalyzer"/>
+
+  <rule ref="Squiz.Commenting.FileComment.MissingPackageTag"/>
+  <rule ref="Squiz.Commenting.FileComment.PackageTagOrder"/>
+
+  <rule ref="Generic.Commenting.DocComment.MissingShort"/>
+  <rule ref="Generic.Commenting.DocComment.SpacingBeforeTags"/>
+  <rule ref="Generic.Commenting.DocComment.SpacingAfter"/>
+  <rule ref="Generic.Commenting.DocComment.SpacingBeforeShort"/>
+
+  <rule ref="Generic.Formatting.SpaceAfterNot">
+    <properties>
+      <property name="spacing" value="1"/>
+    </properties>
+  </rule>
+
+  <rule ref="Generic.CodeAnalysis.UnusedFunctionParameter">
+    <type>error</type>
+  </rule>
+
+  <rule ref="PSR2.Classes.PropertyDeclaration">
+    <type>error</type>
+  </rule>
+
+  <rule ref="SlevomatCodingStandard.Variables.UnusedVariable"/>
+  <rule ref="SlevomatCodingStandard.Functions.UnusedParameter"/>
+  <rule ref="SlevomatCodingStandard.Namespaces.UnusedUses">
+    <properties>
+      <property name="searchAnnotations" value="true"/>
+      <property name="ignoredAnnotationNames" type="array">
+        <element value="@see"/>
+        <element value="@throws"/>
+      </property>
+    </properties>
+  </rule>
+
+  <rule ref="Inpsyde.CodeQuality.Psr4">
+    <properties>
+      <property
+        name="psr4"
+        type="array"
+        value="
+        Awesome=>src,
+        Awesome\Tests\Unit=>tests/unit,
+        Awesome\Tests\E2e=>tests/e2e,
+        Awesome\Tests\Shared=>tests/shared
+      "/>
+    </properties>
+  </rule>
+</ruleset>
